@@ -1,0 +1,70 @@
+<template>
+    <lightning-card title="Quiz Questionarie">
+      <form>
+          <template for:each={myQuestions} for:item="quest">
+            <div key={quest.id} class="slds-p-around_medium">
+
+                <strong>{quest.id} : {quest.question}</strong>
+
+                <div class="slds-grid slds-gutters slds-p-around_medium">
+                    <div class="slds-col">
+                      <span><lightning-input 
+                        type="checkbox" 
+                        label={quest.options.a} 
+                        name={quest.id}
+                        onchange={saveOption}
+                        value={quest.correctAnswer}>
+                    </lightning-input></span>
+                    </div>
+                    <div class="slds-col">
+                      <span><lightning-input 
+                        type="checkbox" 
+                        label={quest.options.b} 
+                        name={quest.id}
+                        onchange={saveOption}
+                        value={quest.correctAnswer}>
+                    </lightning-input></span>
+                    </div>
+                    <div class="slds-col">
+                      <span><lightning-input 
+                        type="checkbox" 
+                        label={quest.options.c} 
+                        name={quest.id}
+                        onchange={saveOption}
+                        value={quest.correctAnswer}>
+                    </lightning-input></span>
+                    </div>
+                  </div>
+                
+                
+                
+
+
+            </div>
+
+          </template>
+
+        <lightning-button 
+          variant="brand" 
+          label="SUBMIT" 
+          type="submit"
+          title="SUBMIT quiz" 
+          onclick={submitHandler} 
+          disabled={allSelected}
+          class="slds-m-left_x-small">
+        </lightning-button>
+
+        <lightning-button 
+          variant="brand" 
+          label="RESET" 
+          title="RESET quiz" 
+          onclick={resetHandler} 
+          class="slds-m-left_x-small">
+        </lightning-button>
+      </form>
+        
+
+       
+    </lightning-card>
+    
+</template>
